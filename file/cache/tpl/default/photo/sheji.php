@@ -88,26 +88,27 @@
                                     <a class="option <?php if($catid == $parentid) { ?>cur<?php } ?>
 " href="list.php?catid=<?php echo $parentid;?>">全部</a>
                                     <?php $child = get_maincat($parentid, $CATEGORY, 1);?>
+                                    <?php $one_catid = $child['0']['catid']?>
                                     <?php if(is_array($child)) { foreach($child as $i => $k) { ?>
                                     <a class="option <?php if($catid == $k['catid'] || $thisCatid['2'] == $k['catid']) { ?>cur<?php } ?>
 " href="<?php echo $MOD['linkurl'];?><?php echo $k['linkurl'];?>"><?php echo $k['catname'];?></a>
                                     <?php } } ?>
                                 </dd>
                             </dl>
-                            <?php if(is_array($child)) { foreach($child as $i => $k) { ?>
                             <dl>
-                                <dt><?php echo $k['catname'];?></dt>
+                                <?php $two_carid = $two_carid == $parentid ? $one_catid : $two_carid?>
+                                <?php $childs = get_maincat($two_carid, $CATEGORY, 1);?>
+                                <?php if($two_carid) $thisCat = get_cat($two_carid);?>
+                                <dt><?php echo $thisCat['catname'];?></dt>
                                 <dd>
                                     <a class="option <?php if($catid == $parentid) { ?>cur<?php } ?>
 " href="list.php?catid=<?php echo $parentid;?>">全部</a>
-                                    <?php $childs = get_maincat($k['catid'], $CATEGORY, 1);?>
                                     <?php if(is_array($childs)) { foreach($childs as $i => $c) { ?>
                                     <a class="option <?php if($catid == $c['catid']) { ?>cur<?php } ?>
 " href="<?php echo $MOD['linkurl'];?><?php echo $c['linkurl'];?>"><?php echo $c['catname'];?></a>
                                     <?php } } ?>
                                 </dd>
                             </dl>
-                            <?php } } ?>
                         </li>
                         <?php $tags = tag("moduleid=$moduleid&c=3$dtype&catid=$catid&pagesize=10&page=$page&showpage=1&datetype=5&order=".$MOD['order']."&template=null")?>
                         <?php if($tags) { ?>

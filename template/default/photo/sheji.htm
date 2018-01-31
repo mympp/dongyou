@@ -89,23 +89,27 @@
                                 <dd>
                                     <a class="option {if $catid == $parentid}cur{/if}" href="list.php?catid={$parentid}">全部</a>
                                     {php $child = get_maincat($parentid, $CATEGORY, 1);}
+                                    {php $one_catid = $child[0][catid]}
                                     {loop $child $i $k}
                                     <a class="option {if $catid == $k[catid] || $thisCatid[2] == $k[catid]}cur{/if}" href="{$MOD[linkurl]}{$k[linkurl]}">{$k[catname]}</a>
                                     {/loop}
                                 </dd>
                             </dl>
-                            {loop $child $i $k}
                             <dl>
-                                <dt>{$k[catname]}</dt>
+                                {php $two_carid = $two_carid == $parentid ? $one_catid : $two_carid}
+                                {php $childs = get_maincat($two_carid, $CATEGORY, 1);}
+
+                                <!--{php if($two_carid) $thisCat = get_cat($two_carid);}-->
+                                <dt>{$thisCat[catname]}</dt>
                                 <dd>
                                     <a class="option {if $catid == $parentid}cur{/if}" href="list.php?catid={$parentid}">全部</a>
-                                    {php $childs = get_maincat($k[catid], $CATEGORY, 1);}
                                     {loop $childs $i $c}
                                     <a class="option {if $catid == $c[catid]}cur{/if}" href="{$MOD[linkurl]}{$c[linkurl]}">{$c[catname]}</a>
                                     {/loop}
                                 </dd>
                             </dl>
-                            {/loop}
+
+
                         </li>
                         <!--{php $tags = tag("moduleid=$moduleid&c=3$dtype&catid=$catid&pagesize=10&page=$page&showpage=1&datetype=5&order=".$MOD[order]."&template=null")}-->
                         {if $tags}

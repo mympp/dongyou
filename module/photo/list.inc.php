@@ -63,10 +63,21 @@ if($EXT['mobile_enable']) $head_mobile = $EXT['mobile_url'].mobileurl($moduleid,
 $template = $CAT['template'] ? $CAT['template'] : ($MOD['template_list'] ? $MOD['template_list'] : 'list');
 $CAT = get_cat($catid);
 $thisCatid = explode(',', $CAT['arrparentid']);
+//echo '<pre>';var_dump($CAT);echo '</pre>';
 if($thisCatid[1]){
 	$parentid = $thisCatid[1];
+
 }else{
 	$parentid = $catid;
 }
+
+if($thisCatid[2]){
+	$two_carid = $thisCatid[2];
+
+}else{
+	$two_carid = $catid;
+}
+
+var_dump($two_carid);
 include template($template, $module);
 ?>
