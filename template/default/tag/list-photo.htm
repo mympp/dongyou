@@ -1,0 +1,28 @@
+<div class="wrap__repair-list mt--10">
+	<div class="waterfall-inner">
+		<ul class="col clearfix" id="js-container">
+			{loop $tags $k $t}
+			<li class="box">
+				<div class="inner">
+					<a class="img" href="{$t[linkurl]}">
+						<img src="{str_replace('.thumb.', '.middle.',$t[thumb])}">
+					</a>
+					<div class="title">{$t[title]}</div>
+				</div>
+			</li>
+			{/loop}
+		</ul>
+	</div>
+</div>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}
+<script type="text/javascript">
+	$(function(){
+		var $container = $('#js-container');
+		$container.imagesLoaded(function(){
+			$container.masonry({
+				itemSelector: '.box',
+				isAnimated : true	//是否采用jquery动画进行重拍版
+			});
+		});
+	});
+</script>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<title>关于我们_东有家居装饰</title>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://dongyou.fenfenguo.com/mobile/about.php?itemid=1">
+<link rel="shortcut icon" type="image/x-icon" href="http://dongyou.fenfenguo.com/favicon.ico"/>
+<link rel="bookmark" type="image/x-icon" href="http://dongyou.fenfenguo.com/favicon.ico"/>
+<link rel="archives" title="东有家居装饰" href="http://dongyou.fenfenguo.com/archiver/"/>
+  <link rel="stylesheet" href="http://dongyou.fenfenguo.com/statics/css/reset.css">
+  <link rel="stylesheet" href="http://dongyou.fenfenguo.com/statics/css/layout.css">
+  <script type="text/javascript" src="http://dongyou.fenfenguo.com/lang/zh-cn/lang.js"></script>
+  <script type="text/javascript" src="http://dongyou.fenfenguo.com/file/script/config.js"></script>
+  <script src="http://dongyou.fenfenguo.com/statics/js/jquery-1.9.1.min.js"></script>
+  <script src="http://dongyou.fenfenguo.com/statics/js/common.js"></script>
+</head>
+<body class="bg--fff">
+  <!-- <>顶部区域 -->
+<div class="sec__header">
+<div class="header-inner borB">
+<!-- 顶部1 -->
+<div class="wrap_topbar clearfix">
+<div class="mid clearfix">
+<div class="fl"><a class="btn-favicon" onclick="addFav()">收藏东有</a><script src="http://dongyou.fenfenguo.com/statics/js/auth.js"></script></div>
+<div class="fr">
+<ul class="rt-list">
+<li>您好 test ，欢迎来到东有家居装饰！</li>
+<li class="vline">|</li>
+<li><a href="/member/collection_jiaju.php">我的收藏</a></li>
+<li class="vline">|</li>
+<li><a href="javascript:alert('待完善')">帮助中心</a></li>
+<li class="vline">|</li>
+<li>联系方式：<b class="ff-hv">13794416333</b></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- //顶部2 -->
+<div class="wrap_navbar J__navbar">
+<div class="mid clearfix">
+<div class="logo fl"><a href="/"><img src="http://dongyou.fenfenguo.com/statics/img/logo.png" /></a></div>
+<div class="nav__menu fl">
+<dl class="clearfix">
+<dd class="on"><a href="/">首页</a></dd>
+<dd data-type="1"><a href="http://dongyou.fenfenguo.com/photo/">定制家居<i class="arr"></i></a></dd>
+<dd><a href="http://dongyou.fenfenguo.com/mall/">小区案例</a></dd>
+<dd data-type="2"><a href="http://dongyou.fenfenguo.com/special/">东有服务<i class="arr"></i></a></dd>
+<dd data-type="3"><a href="http://dongyou.fenfenguo.com/news/">常见问题<i class="arr"></i></a></dd>
+<dd><a href="/about">关于我们</a></dd>
+</dl>
+</div>
+<div class="box__sear fr">
+<div class="inner clearfix">
+<div class="select fl J__searSelect">
+<i class="text" id="destoon_select"> 全部 </i>
+<span class="option" style="display:none;">
+<em onclick="setModule('16','小区案例')">小区案例</em>
+<em onclick="setModule('21','常见问题')">常见问题</em>
+<em onclick="setModule('11','东有服务')">东有服务</em>
+<em onclick="setModule('12','定制家居')">定制家居</em>
+</span>
+</div>
+<form class="fl" id="destoon_search" action="search.php" onsubmit="return Dsearch(1);">
+<input type="hidden" name="moduleid" value="" id="destoon_moduleid"/>
+<input type="hidden" name="spread" value="0" id="destoon_spread"/>
+<input class="ipt-sear fl" name="kw" id="destoon_kw" type="text" class="search_i" value="请输入关键词" onfocus="if(this.value=='请输入关键词') this.value='';" onkeyup="STip(this.value);" autocomplete="off" x-webkit-speech speech/>
+<input class="btn-sear fl" type="submit" value="" />
+</form>
+</div>
+</div>
+</div>
+<!--//下拉框-->
+<div class="wrap__dropdownMenu J__dropdownMenu">
+<div class="dropdownMenu" data-type="1" style="display:none;">
+<ul class="clearfix">
+<li><a href="/photo/list.php?catid=14"><i class="ico i1"></i><p>家居定制产品</p></a></li>
+<li><a href="/photo/list.php?catid=15"><i class="ico i2"></i><p>设计图库</p></a></li>
+<li><a href="/photo/list.php?catid=16"><i class="ico i3"></i><p>免费量尺设计</p></a></li>
+</ul>
+</div>
+<div class="dropdownMenu" data-type="2" style="display:none;">
+<ul class="clearfix">
+<li><a href="/special/list.php?catid=43"><i class="ico i4"></i><p>厂家定制图库</p></a></li>
+<li><a href="/special/list.php?catid=44"><i class="ico i5"></i><p>服务保障</p></a></li>
+<li><a href="/special/list.php?catid=45"><i class="ico i6"></i><p>场景定制</p></a></li>
+</ul>
+</div>
+<div class="dropdownMenu" data-type="3" style="display:none;">
+<ul class="clearfix">
+<li><a href="/news/list.php?catid=10"><i class="ico i7"></i><p>家装攻略</p></a></li>
+<li><a href="/news/list.php?catid=11"><i class="ico i8"></i><p>材料知识</p></a></li>
+<li><a href="/news/list.php?catid=12"><i class="ico i9"></i><p>设计知识</p></a></li>
+<li><a href="/news/list.php?catid=13"><i class="ico i10"></i><p>家居风水</p></a></li>
+</ul>
+</div>
+</div>
+<script type="text/javascript">
+$(function(){
+$(".J__navbar .nav__menu dl dd").hover(function(){
+$(this).addClass("on").siblings().removeClass("on");
+$(".J__dropdownMenu .dropdownMenu").hide();
+$(".J__dropdownMenu, .J__dropdownMenu .dropdownMenu[data-type='"+$(this).attr("data-type")+"']").slideDown(300);
+}, function(){
+});
+$(".J__navbar").on("mouseleave", function () {
+$(".J__dropdownMenu .dropdownMenu").slideUp(300);
+$(".J__navbar .nav__menu dl dd").removeClass("on");
+});
+});
+</script>
+</div>
+</div>
+</div><!-- END.sec_header -->
+<!-- <>主体容器区域 -->
+<div class="container">
+<!-- //banner区域 -->
+<div class="wrap__about-banner"></div>
+
+<div class="wrap__about-summary">
+<div class="mid">
+<div class="intros clearfix">
+<div class="lt fl">
+<div class="rect">
+<h2>【品牌简介】</h2>
+<h3>东有家居装饰</h3>
+<span class="db ff-sm">>>></span>
+</div>
+<h2 class="hdtxt">您与数万家庭的共同选择</h2>
+<p>“东有家居装饰”由广州市东有装饰有限公司投资创办，公司集不锈钢立柱,不锈钢楼梯立柱,不锈钢拦杆立柱,不锈钢扶手立柱,不锈钢护栏立柱,不锈钢工程立柱等系列以及配件的销售、加工、制作及安装为一体，是一家以“打造最专业的栏杆扶手企业”为使命的装饰公司。</p>
+<p>公司自成立以来，专注于不锈钢栏杆扶手的设计、制作、安装与维护，研发并实现了系列新颖的栏杆扶手款式，用专业和技术打破了一个个不锈钢工程神话。我公司主营不锈钢栏杆、不锈钢楼梯扶手、铝合金栏杆扶手、铁艺护栏等产品，专注于栏杆扶手的设计、制作及安装。随着业务范围的不断拓展与深入挖掘，我司丰富了系列产品线的配套部件，使产品更加精深全面。除供应各式栏杆扶手外，我司汇聚栏杆扶手全套配件资源，系列配件产品成为我司又一重点业务，为栏杆扶手的实现提供完善的配套服务。</p>
+<p>十年风雨历程，公司积淀了雄厚实力与宝贵经验，且具有强大的供应及施工能力，2012年启动全新计划，打造专业全面的栏杆扶手网站，不断提升产品及服务质量，为消费者提供优质高效的满意服务。</p>
+</div>
+<div class="rt fr"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/about-bg01-img.png" /></div>
+</div>
+</div>
+</div>
+
+<!-- //公司荣誉 -->
+<div class="similar-wrap wrap__company-honor">
+<div class="mid clearfix">
+<div class="mt"><span class="tit c--fff"><i class="line"></i>公司荣誉<i class="line"></i></span><label class="c--fff">让每一个顾客都享受品质家居</label></div>
+<div class="mc">
+<div class="align-c mt--80"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/about__company-honor.png" /></div>
+</div>
+</div>
+</div>
+
+<!-- //品牌实力 -->
+<div class="similar-wrap wrap__brand-power">
+<div class="mid clearfix">
+<div class="mt"><span class="tit"><i class="line"></i>品牌实力<i class="line"></i></span><label>让每一个选择我们的人都能享受品质家居</label></div>
+<div class="mc">
+<ul>
+<li><a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img01.jpg" height="120" width="285" /></a></li>
+<li><a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img02.jpg" height="120" width="285" /></a></li>
+<li><a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img03.jpg" height="120" width="285" /></a></li>
+<li><a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img04.jpg" height="120" width="285" /></a></li>
+</ul>
+<ul class="middle">
+<li>
+<a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img05.jpg" height="120" width="285" /></a>
+<a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img06.jpg" height="120" width="285" /></a>
+</li>
+<li class="bigimg">
+<a><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-bigimg.jpg" height="258" width="590" /></a>
+<div class="info">
+<h2>东有家居定制</h2>
+<p>不辜负每一位选择我们的您</p>
+<a class="btn-zixun bg__ff4a00-hover transit" href="#">点击咨询</a>
+</div>
+</li>
+<li>
+<a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img07.jpg" height="120" width="285" /></a>
+<a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img08.jpg" height="120" width="285" /></a>
+</li>
+</ul>
+<ul>
+<li><a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img09.jpg" height="120" width="285" /></a></li>
+<li><a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img10.jpg" height="120" width="285" /></a></li>
+<li><a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img11.jpg" height="120" width="285" /></a></li>
+<li><a href="#"><img src="http://dongyou.fenfenguo.com/statics/img/placeholder/brand-img12.jpg" height="120" width="285" /></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- //加入我们 -->
+<div class="similar-wrap wrap__about-joinme bg--fff">
+<div class="mid clearfix">
+<div class="mt"><span class="tit"><i class="line"></i>加入我们<i class="line"></i></span><label></label></div>
+<div class="mc">
+<ul class="clearfix">
+<li>
+<h2 class="name">铝合金门窗制作师傅</h2>
+<div class="row">
+<p>岗位描述：</p>
+<p>1、负责公司不锈钢/铝合金相关产品的加工制作</p>
+<p>2、负责栏杆扶手、不锈钢/铝合金门窗等的现场测量、估价及安装</p>
+<p>3、负责与客户洽谈方案及相关商务事宜</p>
+</div>
+<div class="row">
+<p>岗位要求：</p>
+<p>1、2年以上铝合金或不锈钢门窗、栏杆扶手、制品等制作工作经验，熟悉不锈钢和铝合金材料及其相关产品的生产流程、工艺制作、产品性能；</p>
+<p>2、安装各类栏杆扶手、不锈钢/铝合金门窗上具有精湛的技艺及娴熟的经验</p>
+<p>3、懂得看图纸，并能根据图纸计料和计价，有独立接单能力；</p>
+</div>
+<div class="row">
+<p>招聘人数：3 <span class="ml--20">工作地点：广州</span></p>
+<p>本岗位详情咨询电话 020-32058440转803。</p>
+</div>
+</li>
+<li>
+<h2 class="name">不锈钢栏杆制作师傅</h2>
+<div class="row">
+<p>岗位描述：</p>
+<p>1、负责公司不锈钢/铝合金相关产品的加工制作</p>
+<p>2、负责栏杆扶手、不锈钢/铝合金门窗等的现场测量、估价及安装</p>
+<p>3、负责与客户洽谈方案及相关商务事宜</p>
+</div>
+<div class="row">
+<p>岗位要求：</p>
+<p>1、2年以上铝合金或不锈钢门窗、栏杆扶手、制品等制作工作经验，熟悉不锈钢和铝合金材料及其相关产品的生产流程、工艺制作、产品性能；</p>
+<p>2、安装各类栏杆扶手、不锈钢/铝合金门窗上具有精湛的技艺及娴熟的经验</p>
+<p>3、懂得看图纸，并能根据图纸计料和计价，有独立接单能力；</p>
+</div>
+<div class="row">
+<p>招聘人数：3 <span class="ml--20">工作地点：广州</span></p>
+<p>本岗位详情咨询电话 020-32058440转803。</p>
+</div>
+</li>
+<li>
+<h2 class="name">楼梯扶手制作师傅</h2>
+<div class="row">
+<p>岗位描述：</p>
+<p>1、负责公司不锈钢/铝合金相关产品的加工制作</p>
+<p>2、负责栏杆扶手、不锈钢/铝合金门窗等的现场测量、估价及安装</p>
+<p>3、负责与客户洽谈方案及相关商务事宜</p>
+</div>
+<div class="row">
+<p>岗位要求：</p>
+<p>1、2年以上铝合金或不锈钢门窗、栏杆扶手、制品等制作工作经验，熟悉不锈钢和铝合金材料及其相关产品的生产流程、工艺制作、产品性能；</p>
+<p>2、安装各类栏杆扶手、不锈钢/铝合金门窗上具有精湛的技艺及娴熟的经验</p>
+<p>3、懂得看图纸，并能根据图纸计料和计价，有独立接单能力；</p>
+</div>
+<div class="row">
+<p>招聘人数：3 <span class="ml--20">工作地点：广州</span></p>
+<p>本岗位详情咨询电话 020-32058440转803。</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="wrap__about-map">
+<div class="mid">
+<div class="forms">
+<h2 class="tit">抢领免费设计名额</h2>
+<div class="row clearfix">
+<input class="ipt-text fl" type="text" name="username" placeholder="您的称呼*" style="width:150px;" />
+<input class="ipt-text fl" type="text" name="telphone" placeholder="您的手机*" style="margin-left:10px;width:270px;" />
+</div>
+<div class="row clearfix"><input class="ipt-text" type="text" name="xiaoqu" placeholder="小区名称" style="width:450px;" /></div>
+<div class="row clearfix"><textarea class="ipt-area" name="content" placeholder="请输入您的问题或留言" style="height:80px;width:450px;"></textarea></div>
+<div class="row clearfix"><a class="btn-weixiu bg__ff4a00-hover transit">预约维修</a></div>
+</div>
+</div>
+</div>
+</div>
+<!-- …… 右侧浮动工具条.Start-->
+<div class="wrap__floatToolbar">
+<ul class="clearfix">
+<li class="J__freeDesign">
+<a class="ico i1" href="javascript:;"></a>
+<div class="wrap-sub">
+<a href="javascript:;">免费设计</a><i class="arr"></i>
+</div>
+</li>
+<li>
+<a class="ico i2" href="javascript:;"></a>
+<div class="wrap-sub wrap-qrcode clearfix">
+<div class="item fl">
+<p>关注微信</p>
+<img src="http://dongyou.fenfenguo.com/statics/img/ft-qrcode-img.png" />
+</div>
+<div class="item fr">
+<p>关注微信</p>
+<img src="http://dongyou.fenfenguo.com/statics/img/ft-qrcode-img.png" />
+</div>
+<i class="arr"></i>
+</div>
+</li>
+<li>
+<a class="ico i3" href="javascript:;"></a>
+<div class="wrap-sub">
+<a href="javascript:;">联系客服</a><i class="arr"></i>
+</div>
+</li>
+<li class="J__goTop">
+<a class="ico i4" href="javascript:;"></a>
+<div class="wrap-sub">
+<a href="javascript:;">返回顶部</a><i class="arr"></i>
+</div>
+</li>
+</ul>
+</div>
+<!--//免费设计弹窗-->
+<div class="popup__mask"></div>
+<div class="popup__model popup-freedesign">
+<i class="popup-close"></i>
+<form action="http://dongyou.fenfenguo.com/guestbook/index.php" method="post" id="subform">
+<ul class="form">
+<input type="hidden" name="submit" value="1" />
+<input type="hidden" name="type" value="设计咨询" />
+<li><label class="lbl">建筑面积</label><input class="ipt-text" type="text" name="mianji" placeholder="请输入建筑面积" /> <span class="unit">㎡</span></li>
+<li><label class="lbl">手机号码<i class="c--ff4a00">*</i></label><input class="ipt-text" type="text" name="telephone" placeholder="请输入您的手机号码" /></li>
+<li><label class="lbl">您的称呼<i class="c--ff4a00">*</i></label><input class="ipt-text" type="text" name="nickname" placeholder="请输入您的称呼" /></li>
+</ul>
+<input class="btn-join" type="submit" value="立即加入" style="border:none;background:none;cursor:pointer;" />
+</form>
+</div>
+<script type="text/javascript">
+$(function(){
+$(".wrap__floatToolbar li").hover(function () {
+$(this).find(".wrap-sub").stop().show().animate({
+right : "48px",
+opacity : "1"
+}, 300)
+}, function () {
+$(this).find(".wrap-sub").stop().show().animate({
+right : "105px",
+opacity : "0"
+}, 300, function () {
+$(this).hide()
+})
+});
+
+//返回顶部
+$(".J__goTop").on("click", function () {
+$("html, body").animate({scrollTop : 0}, 200);
+});
+
+//免费设计弹窗
+$(".J__freeDesign").on("click", function(){
+$(".popup-freedesign").removeClass("up").addClass("down");
+$(".popup__mask").fadeIn(300);
+});
+$(".popup-freedesign .popup-close").on("click", function () {
+$(".popup-freedesign").removeClass("down").addClass("up");
+$(".popup__mask").fadeOut(300);
+});
+});
+</script>
+<!-- …… 右侧浮动工具条.End--><!-- <>底部区域 -->
+<div class="sec_footer">
+<div class="part-1">
+<div class="mid clearfix">
+<ul>
+<li class="first"><i class="ico i1"></i><div class="txt dib"><h2>资讯</h2><p>预约咨询</p></div></li>
+<li><i class="ico i4"></i><div class="txt dib"><h2>设计</h2><p>方案对比</p></div></li>
+<li><i class="ico i3"></i><div class="txt dib"><h2>报价</h2><p>免费报价</p></div></li>
+<li><i class="ico i2"></i><div class="txt dib"><h2>量尺出图</h2><p>上门量尺设计</p></div></li>
+<li><i class="ico i5"></i><div class="txt dib"><h2>到府安装</h2><p>工人施工交付</p></div></li>
+<li><i class="ico i6"></i><div class="txt dib"><h2>竣工验收</h2><p>享受国标质保</p></div></li>
+</ul>
+</div>
+</div>
+<div class="part-2">
+<div class="mid clearfix">
+<div class="p1 dib part">
+<dl>
+<dt>关于东有</dt>
+<dd><a href="/about">关于我们</a></dd><dd><a href="#">公司荣誉</a></dd><dd><a href="#">联系我们</a></dd>
+</dl>
+</div>
+<div class="p2 dib part">
+<dl>
+<dt>产品场景</dt>
+<dd><a href="#">小区案例</a></dd><dd><a href="#">场景定制</a></dd><dd><a href="#">厂家定制</a></dd>
+</dl>
+</div>
+<div class="p3 dib part">
+<dl>
+<dt>用户帮助</dt>
+<dd><a href="#">预订流程</a></dd><dd><a href="#">加入我们</a></dd><dd><a href="#">投诉建议</a></dd>
+</dl>
+</div>
+<div class="qrcode dib">
+<div class="dib">
+<img src="http://dongyou.fenfenguo.com/statics/img/ft-qrcode-img.png" width="80" height="80" />
+<p>微信关注东有</p>
+</div>
+<div class="dib ml--30">
+<img src="http://dongyou.fenfenguo.com/statics/img/ft-qrcode-img.png" width="80" height="80" />
+<p>东有招聘英才</p>
+</div>
+</div>
+<div class="cst dib">
+<p class="c--fff">客服服务热线</p>
+<p class="tel">13794416333</p>
+<p class="time fs12">热线时间 09:00-23:00</p>
+<a class="btn-kefu bg__ff4a00-hover transit mt--5" href="javascript:;">联系在线客服</a>
+</div>
+</div>
+
+<!-- //热搜推荐、友情链接 -->
+<div class="mid clearfix">
+<div class="hot-links mt--20">
+<ul>
+<li class="tit fl"><b>热搜推荐</b></li>
+<li class="list">
+<a href="#">不锈钢栏杆</a><a href="#">不锈钢护栏</a><a href="#">不锈钢楼梯</a><a href="#">不锈钢扶手</a><a href="#">玻璃栏杆</a><a href="#">玻璃扶手</a><a href="#">阳台护栏</a><a href="#">工程栏杆</a><a href="#">工程护栏</a><a href="#">工程楼梯</a><a href="#">工程扶手</a><a href="#">弧形楼梯</a><a href="#">装饰扶手</a><a href="#">耐力板雨棚</a><a href="#">阳光板雨棚</a><a href="#">玻璃雨棚</a><a href="#">钢结构雨棚</a><a href="#">广州遮阳棚</a><a href="#">不锈钢雨棚</a><a href="#">阳光板雨篷</a><a href="#">广州雨棚</a><a href="#">门窗</a><a href="#">铝合金门窗</a><a href="#">推拉门</a><a href="#">断桥铝窗</a><a href="#">铝合金窗</a><a href="#">别墅铝合金窗</a><a href="#">隐形纱窗</a><a href="#">防盗纱窗</a><a href="#">防蚊纱窗</a>
+</li>
+</ul>
+<ul class="mt--5">
+<li class="tit fl"><b>友情链接</b></li>
+<li class="list">
+<a href="#">不锈钢立柱配件</a><a href="#">广州市东强栏杆扶手有限公司</a><a href="#">广州市东胜栏杆扶手工程公司</a><a href="#">广州东有不锈钢制品厂</a><a href="#">全铝家居定制</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="part-3">
+<div class="mid ct clearfix">
+<div class="copyright">Copyright &copy; 2013 gzdongyou.com.All Right Reserved.广州市东有装饰有限公司 粤ICP备15073194号-2</div>
+<div class="icp mt--5">公司主营不锈钢楼梯扶手、铝合金阳台栏杆、铸铁阳台栏杆、锌钢护栏等产品，供应不锈钢栏杆扶手、铝合金栏杆扶手、铁艺栏杆扶手、栏杆扶手配件。欢迎来电咨询！</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+/** __公共函数 */
+$(function(){
+//菜单下拉项
+
+
+//搜索下拉项
+$(".J__searSelect").hover(function(){
+$(this).find(".option").stop(true).slideToggle(300);
+});
+$(".J__searSelect .option").on("click", "em", function(){
+var text = $(this).text();
+$(this).parents(".option").siblings(".text").text(text);
+})
+});
+</script>
+
+</body>
+</html>

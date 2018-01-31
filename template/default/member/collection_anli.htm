@@ -1,0 +1,91 @@
+{template 'ui_header'}
+<link href="{DT_STATIC}statics/css/ucenter.css" rel="stylesheet" />
+
+<!-- END.sec_header -->
+	
+	<!-- <>个人中心主体区域 -->
+	<div class="sec__ucenter-wrapper mid pb--50 clearfix">
+		<!--左导航-->
+		{template 'navigator',$module}
+		
+		<div class="uc-main">
+			<div class="uc-inner">
+				<div class="uc-cntwrap clearfix">
+					<!-- //我的收藏-->
+					<div class="uc-collect uc-mycollect ucbor bg--fff">
+						{template 'collection_nav',$module}
+
+						<div class="ucborT padding30 pt--20">
+							<div class="uc__table">
+								<table border="0" cellspacing="0" cellpadding="0" id="J__ucCollect">
+									<thead>
+										<tr>
+											<th width="10%">
+												<label class="cp__checkbox fl"><i class="chkbox_item"><input class="J__chkAll" type="checkbox" name="chkAll"></i> 全选</label>
+											</th>
+											<th width="55%"><a class="c--2093f7 J__delAll" href="javascript:;" style="position:absolute;left:5px;top:10px;">删除</a> 标题</th>
+											<th>参考价</th>
+											<th>操作</th>
+											<th width="6%"></th>
+										</tr>
+									</thead>
+									<tbody class="J__trHover">
+									<!--{php $tags = tag("table=favorite_dongyou&condition=userid=$_userid and parentid=$parentid&order=addtime desc&page=$page&showpage=1&template=null&pagesize=4")}-->
+									{if $tags}
+									{loop $tags $i $t}
+									<tr>
+										<!--{php $mallData = tag("table=mall&condition=itemid=".$t['articleid']." and catid=".$t['catid']."&fields=title,itemid,thumb,linkurl,price&template=null&pagesize=1")}-->
+										<td>
+											<label class="cp__checkbox fl"><i class="chkbox_item"><input type="checkbox" name="id[]" value="{$t[itemid]}"></i></label>
+										</td>
+										<td class="v__top">
+											<div class="proimg  mr--15 fl"><img class="v__top" src="{$mallData[0][thumb]}" height="120" width="180" /> <!--<span class="picnum">15</span>--></div>
+											<div class="v__middle mt--5">
+												<div class="cmt-pro">
+													<h2 class="title fs16 ff-st mt--10"><a class="ellipsis" href="{$MODULE[$parentid][linkurl]}{$mallData[0][linkurl]}" style="max-width:290px;">{$mallData[0][title]}</a></h2>
+													<p class="mt--30 c--999 fs14 ff-st"><?php $CAT = get_cat($t[catid]); echo cat_pos($CAT, ' &raquo; ');?></p>
+												</div>
+											</div>
+										</td>
+										<td class="align-c">
+											<span class="price c--999 ff-ar"><span class="c--ff4a00">￥<em class="fs30">{$mallData[0][price]}</em></span>起</span>
+										</td>
+										<td class="align-c"><a class="btn-orderNow btn_def transit" href="{$MODULE[$parentid][linkurl]}{$mallData[0][linkurl]}">前往查看</a></td>
+										<td class="align-c"><del class="ico-del J__delCollect" data-itemid="{$t[itemid]}">删除</del></td>
+									</tr>
+									{/loop}
+									{else}
+									<tr>
+										<td>
+
+										</td>
+										<td class="v__top">
+											<a href="/mall" style="color: red;">还没有收藏，前往查看->前往</a>
+										</td>
+										<td class="align-c">
+
+										</td>
+										<td class="align-c"></td>
+										<td class="align-c"></td>
+									</tr>
+									{/if}
+									</tbody>
+								</table>
+							</div>
+
+							<!-- <>分页.pagination -->
+							<div class="zone-g-pagination mt--20 clearfix">
+								<div class="pagination-inner">
+									<!--{tag("table=favorite_dongyou&condition=userid=$_userid and parentid=$parentid&order=addtime desc&page=$page&showpage=1&template=list-page&pagesize=4")}-->
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <>底部区域 -->
+{template 'ui_footer'}

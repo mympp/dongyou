@@ -1,0 +1,269 @@
+{template 'ui_header'}
+	<!-- <>主体容器区域 -->
+	<div class="container">
+		<!-- //当前位置 -->
+		<div class="hd__curPos c--666 fs--12">
+			<div class="mid clearfix"><div class="fl">您所在位置：<a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')}</div></div>
+		</div>
+		
+		<!-- //内容展示区域 -->
+		<div class="sec__repairChoose-detail borT mid">
+			{template 'rightbar', $module}
+			<div class="lt-imgSlider">
+				<!-- //图文资讯-->
+				<div class="wrap__imgtxt-info">
+					<!--{php $imgTags=tag("moduleid=$moduleid&length=20&condition=status=3 and thumb!=''&catid=$catid&areaid=$cityid&pagesize=3&order=".$MOD[order]."&template=null")}-->
+					<ul class="clearfix">
+					{loop $imgTags $i $t}
+					<li class="{if $i==0}first{/if}">
+							<a class="aimg" href="{$t[linkurl]}"><img src="{$t[thumb]}" /></a>
+							<h2 class="tit clamp1">{$t[title]}</h2>
+						</li>
+					{/loop}
+					</ul>
+				</div>
+				
+				<!-- //常见问题列表 -->
+				<div class="wrap__faq-list">
+					<div class="tab-hd clearfix">
+						<span class="{if !$catid }on{/if}"><a data-st-panel-cls="J__swtFaq" href="/news">热门推荐</a></span>
+						<span class="{if $catid == 10 }on{/if}"><a data-st-panel-cls="J__swtFaq" href="/news/list.php?catid=10">维修攻略</a></span>
+						<span class="{if $catid == 11 }on{/if}"><a data-st-panel-cls="J__swtFaq" href="/news/list.php?catid=11">材料知识</a></span>
+						<span class="{if $catid == 12 }on{/if}"><a data-st-panel-cls="J__swtFaq" href="/news/list.php?catid=12">设计知识</a></span>
+						<span class="{if $catid == 13 }on{/if}"><a data-st-panel-cls="J__swtFaq" href="/news/list.php?catid=13">家居风水</a></span>
+					</div>
+					<div class="tab-ct">
+						<div class="J__swtFaq" style="display: block;">
+							<div class="faq-list">
+								<!--{php $tags=tag("moduleid=$moduleid&condition=status=3&order=addtime desc&catid=$catid&areaid=$cityid&template=list-cat&pagesize=3&page=$page&showpage=1&showcat=1");}-->
+
+							</div>
+						</div>
+						<div class="J__swtFaq" style="display: none;">
+							<div class="faq-list">
+								<ul class="clearfix">
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img06.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[设计知识] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img02.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[家居风水] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img05.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[设计知识] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+								</ul>
+								
+								<!-- <>分页.pagination -->
+								<div class="zone-g-pagination mt--10 clearfix">
+									<div class="pagination-inner">
+										<div class="p-body">
+											<a class="first disabled" href="#" title="上一页">上一页</a>
+											<span class="selected">1</span>
+											<a href="#">2</a>
+											<a href="#">3</a>
+											<a href="#">4</a>
+											<a href="#">5</a>
+											<span class="dotted">...</span>
+											<a href="#">15</a>
+											<a class="last" href="#" title="下一页">下一页</a>
+										</div>
+										<div class="p-info mr--10 dib">
+											跳到 <input class="ipt-text" type="text" /> <a class="btn-go">确定</a>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="J__swtFaq" style="display: none;">
+							<div class="faq-list">
+								<ul class="clearfix">
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img03.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[维修攻略] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img07.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[家居风水] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img02.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[设计知识] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+								</ul>
+								
+								<!-- <>分页.pagination -->
+								<div class="zone-g-pagination mt--10 clearfix">
+									<div class="pagination-inner">
+										<div class="p-body">
+											<a class="first disabled" href="#" title="上一页">上一页</a>
+											<span class="selected">1</span>
+											<a href="#">2</a>
+											<a href="#">3</a>
+											<a href="#">4</a>
+											<a href="#">5</a>
+											<span class="dotted">...</span>
+											<a href="#">15</a>
+											<a class="last" href="#" title="下一页">下一页</a>
+										</div>
+										<div class="p-info mr--10 dib">
+											跳到 <input class="ipt-text" type="text" /> <a class="btn-go">确定</a>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="J__swtFaq" style="display:none;">
+							<div class="faq-list">
+								<ul class="clearfix">
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img03.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[材料知识] 有飘窗的卧室，才是真正意义上的卧室！有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img07.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[设计知识] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img01.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[家居风水] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img02.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[设计知识] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+								</ul>
+								
+								<!-- <>分页.pagination -->
+								<div class="zone-g-pagination mt--10 clearfix">
+									<div class="pagination-inner">
+										<div class="p-body">
+											<a class="first disabled" href="#" title="上一页">上一页</a>
+											<span class="selected">1</span>
+											<a href="#">2</a>
+											<a href="#">3</a>
+											<a href="#">4</a>
+											<a href="#">5</a>
+											<span class="dotted">...</span>
+											<a href="#">15</a>
+											<a class="last" href="#" title="下一页">下一页</a>
+										</div>
+										<div class="p-info mr--10 dib">
+											跳到 <input class="ipt-text" type="text" /> <a class="btn-go">确定</a>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="J__swtFaq" style="display:none;">
+							<div class="faq-list">
+								<ul class="clearfix">
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img02.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[维修攻略] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img05.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[材料知识] 有飘窗的卧室，才是真正意义上的卧室！有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img03.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[家居风水] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+									<li>
+										<a class="aimg fl" href="常见问题-详情页.html"><img src="{DT_STATIC}statics/img/placeholder/case-img07.jpg" /></a>
+										<div class="info">
+											<h2 class="tit"><a href="常见问题-详情页.html">[设计知识] 有飘窗的卧室，才是真正意义上的卧室！</a></h2>
+											<p class="intro clamp3">对于寸土寸金的大城市来说，看似不起眼的飘窗，其实是一个不可多得的存在。它的功能非常强大，不但能充当一个观景台，赋予生活以浪漫温馨的色彩；而且也能成为机能空间，让人更好的享受品质生活的乐趣...</p>
+											<div class="time">2017-09-13 09:34:55 <span class="view"><i class="c--ff4a00">53</i>人浏览</span></div>
+										</div>
+									</li>
+								</ul>
+								
+								<!-- <>分页.pagination -->
+								<div class="zone-g-pagination mt--10 clearfix">
+									<div class="pagination-inner">
+										<div class="p-body">
+											<a class="first disabled" href="#" title="上一页">上一页</a>
+											<span class="selected">1</span>
+											<a href="#">2</a>
+											<a href="#">3</a>
+											<a href="#">4</a>
+											<a href="#">5</a>
+											<span class="dotted">...</span>
+											<a href="#">15</a>
+											<a class="last" href="#" title="下一页">下一页</a>
+										</div>
+										<div class="p-info mr--10 dib">
+											跳到 <input class="ipt-text" type="text" /> <a class="btn-go">确定</a>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+{template 'slider'}
+{template 'ui_footer'}

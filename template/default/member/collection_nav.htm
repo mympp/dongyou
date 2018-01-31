@@ -1,0 +1,11 @@
+<!--{php $jiajuNum = tag("table=favorite_dongyou&condition=userid=$_userid and parentid=12&fields=count(*) as num&template=null")}-->
+<!--{php $anliNum = tag("table=favorite_dongyou&condition=userid=$_userid and parentid=16&fields=count(*) as num&template=null")}-->
+<!--{php $changjianNum = tag("table=favorite_dongyou&condition=userid=$_userid and parentid=21&fields=count(*) as num&template=null")}-->
+
+<ul class="uc__switch-nav">
+	<li {if $parentid=="12"}class="on"{/if}><a href="collection_jiaju.php">家居定制{php if($jiajuNum[0]['num']) echo '<em class="num">'.$jiajuNum[0]['num'].'</em>';}</a></li>
+	<li {if $parentid=="16"}class="on"{/if}><a href="collection_anli.php">小区案例{php if($anliNum[0]['num']) echo '<em class="num">'.$anliNum[0]['num'].'</em>';}</a></li>
+	<li {if $parentid=="21"}class="on"{/if}><a href="collection_changjian.php">常见问题{php if($changjianNum[0]['num']) echo '<em class="num">'.$changjianNum[0]['num'].'</em>';}</a></li>
+	<li {if $parentid==NULL}class="on"{/if}><a href="collection_lishi.php">浏览历史</a></li>
+</ul>
+

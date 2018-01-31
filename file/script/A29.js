@@ -1,0 +1,1 @@
+document.write('<a href="http://dongyou.fenfenguo.com/photo/show.php?itemid=25" target="_blank"><img src="http://dongyou.fenfenguo.com/file/upload/201801/28/173532951.jpg" width="258" height="200" alt="全屋门窗"/></a>');

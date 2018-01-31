@@ -1,0 +1,75 @@
+{template 'ui_header'}
+<link href="{DT_STATIC}statics/css/ucenter.css" rel="stylesheet" />
+<!-- END.sec_header -->
+	
+	<!-- <>个人中心主体区域 -->
+	<div class="sec__ucenter-wrapper mid pb--50 clearfix">
+		<!--左导航-->
+		{template 'navigator',$module}
+		<div class="uc-main">
+			<div class="uc-inner">
+				<div class="uc-cntwrap clearfix">
+					<!-- //安全中心-->
+					<div class="uc-safeCenter ucbor bg--fff">
+						<ul class="uc__switch-nav">
+							<li class="on"><a href="javascript:;">安全中心</a></li>
+						</ul>
+						<div class="ucborT padding30 pt--10">
+							<div class="wrap__safe-setting clearfix">
+								<ul class="clearfix">
+									<li>
+										<img class="fl mr--20" src="img/ucenter/icon__safe-tag.png" />
+										<div class="safe-info">
+											<h2 class="text mt--10">为了让账户更安全，推荐您完善以下内容设置</h2>
+											<div class="safe mt--15 clearfix">
+												<label class="lbl fl">安全等级</label>
+												<!--等级【低中高】：lv01、lv02、lv03 -->
+												<div class="lv-safe fl"><span class="bg100 lv01"><i style="width:30%;">低</i></span></div>
+												<div class="time fr ff-ar c--999">上次登录：2017-08-31 10:35:55</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="clearfix">
+											<div class="lt-lbl fl">
+												<img class="icoImg" src="img/ucenter/icon-info@2x.png" /> 手机验证 <span class="ml--15 c--999 ff-ar">您手机<em class="tel ff-ar">134*******32</em>还没通过验证</span>
+											</div>
+											<a class="btn_def ff-st fr" href="个人中心-安全中心(修改手机).html">设置</a>
+										</div>
+									</li>
+									<li>
+										<div class="clearfix">
+											<div class="lt-lbl fl">
+												<img class="icoImg" src="img/ucenter/icon-info@2x.png" /> 邮箱验证 <span class="ml--15 c--999 ff-ar">您已经验证并绑定了该邮箱：<em class="email ff-ar">532545433@qq.com</em></span>
+											</div>
+											<a class="btn_def ff-st fr" href="个人中心-安全中心(修改邮箱).html">验证邮箱</a>
+										</div>
+									</li>
+									<li>
+										<div class="clearfix">
+											<div class="lt-lbl fl">
+												<img class="icoImg" src="img/ucenter/icon-info@2x.png" /> 登录密码 <span class="ml--15 c--999 ff-ar">初始密码为系统随机分配密码，不易记忆，推荐用户修改为熟悉的易记的密码</span>
+											</div>
+											<a class="btn_def ff-st fr" href="edit_password.php?">设置密码</a>
+										</div>
+									</li>
+									<li>
+										<div class="clearfix">
+											<div class="lt-lbl fl">
+												<img class="icoImg" src="img/ucenter/icon-dui@2x.png" /> 交易密码 <span class="ml--15 c--999 ff-ar">已设置交易密码</span>
+											</div>
+											<a class="btn_def ff-st fr" href="javascript:;">重置交易密码</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- <>底部区域 -->
+{template 'ui_footer'}

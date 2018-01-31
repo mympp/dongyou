@@ -1,0 +1,102 @@
+{template 'ui_header'}
+<link href="{DT_STATIC}statics/css/ucenter.css" rel="stylesheet" />
+
+<!-- END.sec_header -->
+	
+	<!-- <>个人中心主体区域 -->
+	<div class="sec__ucenter-wrapper mid pb--50 clearfix">
+		<!--左导航-->
+		{template 'navigator',$module}
+		<div class="uc-main">
+			<div class="uc-inner">
+				<div class="uc-cntwrap clearfix">
+					<!-- //我的收藏-->
+					<div class="uc-collect uc-mycollect ucbor bg--fff">
+						{template 'collection_nav',$module}
+
+						<div class="ucborT padding30 pt--20">
+							<div class="uc__table">
+								<!--
+								<table border="0" cellspacing="0" cellpadding="0" id="J__ucCollect">
+									<thead>
+										<tr>
+											<th width="7%">
+												<label class="cp__checkbox fl"><i class="chkbox_item"><input class="J__chkAll" type="checkbox" name="chkAll"></i> 全选</label>
+											</th>
+											<th width="80%"><a class="c--2093f7" href="javascript:;" style="position:absolute;left:5px;top:10px;">删除</a> 标题</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+								</table>
+								-->
+								
+								<div class="uc-viewhistory">
+									<ul class="clearfix" id="J__viewhistory">
+										
+									</ul>
+						
+								</div>
+							</div>
+							
+							<!-- <>分页.pagination 
+							<div class="zone-g-pagination mt--20 clearfix">
+								<div class="pagination-inner">
+									<div class="p-body">
+										<a class="first disabled" href="#" title="上一页">上一页</a>
+										<span class="selected">1</span>
+										<a href="#">2</a>
+										<a href="#">3</a>
+										<a href="#">4</a>
+										<a href="#">5</a>
+										<span class="dotted">...</span>
+										<a href="#">15</a>
+										<a class="last" href="#" title="下一页">下一页</a>
+									</div>
+									<div class="p-info mr--10 dib">
+										跳到 <input class="ipt-text" type="text" /> <a class="btn-go">确定</a>
+									</div>
+								</div>
+							</div>-->
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <>底部区域 -->
+
+<script src="{DT_STATIC}statics/js/zCaches.js"></script>
+<script>
+	var ck = new zCaches();
+	var ck_list = ck.get();
+
+	var clen = ck_list.length;
+
+	var ckwrap = $('#J__viewhistory');
+	ckwrap.on('click','li .del',function(e){
+		var key = $(this).data('id');
+		if(key){
+			ck.delete(key);
+		}
+		$(this).parents('li').remove();
+	});
+
+	for(var i=0;i<clen;i++){
+		render(ck_list[i]);
+	}
+
+	function render(item){
+		var tpl =   '<li>\
+						<a class="aimg" href="/' + item.type + '/show.php?itemid='+ item.id +'">\
+							<img src="'+item.cover+'" height="120" width="174" />\
+							<!--<em class="lbl">楼梯扶手</em>-->\
+						</a>\
+						<div class="title clamp2"><span><a href="/' + item.type + '/show.php?itemid='+ item.id +'">'+item.title+'</a></span></div>\
+						<a class="del" href="javascript:;" data-id="'+item.type+'_'+item.id+'" title="删除"></a>\
+					</li>';
+		ckwrap.append(tpl);
+	}
+</script>
+{template 'ui_footer'}

@@ -1,0 +1,158 @@
+{template 'ui_header'}
+<link href="{DT_STATIC}statics/css/ucenter.css" rel="stylesheet" />
+<script type="text/javascript" src="{DT_STATIC}file/script/swfobject.js"></script>
+
+	<!-- <>个人中心主体区域 -->
+	<div class="sec__ucenter-wrapper mid pb--50 clearfix">
+		{template 'navigator',$module}
+		<div class="uc-main">
+			<div class="uc-inner">
+				<div class="uc-cntwrap clearfix">
+					<div class="uc-collect uc-mycollect ucbor bg--fff">
+						<ul class="uc__switch-nav">
+							<li class="on"><a href="javascript:void(0);">个人信息</a></li>
+						</ul>
+						<div class="ucborT padding30 pt--20">
+							<!-- //信息管理-->
+							<div class="uc__manageInfo">
+								<div class="wrap-forms clearfix">
+									<iframe src="" id="iframe-avatar" name="avatar" style="display:none;"></iframe>
+									<form method="post" target="avatar" action="/member/avatar.php?" enctype="multipart/form-data" id="dform" onsubmit="return check();">
+										<input type="hidden" name="action" value="upload"/>
+										<dl>
+										<dd>
+											<div class="upload-box">
+													<div class="upload-btns dib v__top">
+														<div class="cp__upload-zone fl"><input class="ipt__upload" type="file" name="upfile" id="upfile" class="avatar_file" onchange="if(isImg('upfile', 'jpg|jpeg|gif|png')){this.form.submit();}" ></div>
+													</div>
+													<div class="dib c--999 fs14 ff-hv ml--10">仅支持JPG、PNG、JPEG格式，文件小于2M</div>
+												</div>
+												<!--上传预览-->
+												<div class="upload-preview mt--20">
+													<div class="preview-lgimg dib">
+														<h2>效果预览：</h2>
+														<img class="img-lg preview-img" src="{useravatar($_username, 'large')}&time={$DT_TIME}" height="320" width="320" />
+													</div>
+													<div class="preview-smimg dib v__top">
+														<div class="smimg dib">
+															<img class="img-sm preview-img" src="{useravatar($_username, 'large')}&time={$DT_TIME}" height="100" width="100" />
+															<p>100*100像素</p>
+														</div>
+														<p class="fs14 ff-hv c--999 mt--20">你上传的图片(建议尺寸300*300)，进行评论、留言等都会显示小头像</p>
+													</div>
+												</div>
+											</dd>
+										</dl>
+									</form>
+
+									<form method="post" action="?" onsubmit="return Dcheck();" id="dform">
+										<input type="hidden" name="tab" id="tab" value="{$tab}"/>
+										<dl>
+											<dd>
+												<label class="lbl">昵称</label>
+												<input class="ipt-text" type="text" name="post[passport]" value="{$passport}" />
+											</dd>
+											<dd>
+												<label class="lbl">真实姓名</label>
+												<input class="ipt-text" type="text"  name="post[truename]" id="truename" value="{$truename}" />
+											</dd>
+											<dd>
+												<label class="lbl">性别</label>
+												<div class="iptbox">
+													<div class="sex J__selSex">
+														<label class="cp__radio fl"><i class="radio_item on"><input type="radio" name="post[gender]" value="1" {if $gender==1}checked="checked"{/if}/></i> 男</label>
+														<label class="cp__radio fl ml--20"><i class="radio_item"><input type="radio" name="post[gender]" value="2" {if $gender==2}checked="checked"{/if}/></i> 女</label>
+													</div>
+												</div>
+											</dd>
+											<dd>
+												<label class="lbl">手机</label>
+												<input class="ipt-text" type="text" name="post[mobile]" id="mobile" value="{$mobile}"/>
+											</dd>
+											<dd>
+												<label class="lbl">邮箱</label>
+												<input class="ipt-text" type="text" name="post[email]" value="{$email}" />
+												<span class="tips ml--10">接收订单信息</span>
+											</dd>
+											<dd>
+												<label class="lbl">所在地</label>
+												<div class="iptbox select-area">
+													{ajax_area_select('post[areaid]', '请选择', $areaid)}
+												</div>
+											</dd>
+										</dl>
+										<div class="wrap-btn"><button class="btn_def transit" type="submit" name="submit" style="width:202px;">保存</button></div>
+									</form>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="{DT_STATIC}file/script/swfobject.js"></script>
+<script type="text/javascript">
+	$('#iframe-avatar').on('load',function(e){
+		try{
+			var ifm = $('#iframe-avatar')[0].contentWindow.document;
+			var ctx = $(ifm).find('.content');
+			if(ctx.length>0){
+				alert(ctx.text().trim().split('\n').shift());
+			}else{
+				//上传成功的情况下
+				var src = $(ifm).find("#main>table tr>td").eq(0).find('img').attr('src');
+				if(src){
+					$('.preview-img').attr('src',src);
+				}
+			}
+		}catch(err){
+			console.log(err);
+			alert(err.message)
+		}
+	})
+	if(swfobject.hasFlashPlayerVersion("8") && {if $MOD[domain]||$action=='html'}0{else}1{/if}) {
+		var flashVars =
+		{
+			imgUrl: '{DT_PATH}api/avatar/bg.jpg',
+			uploadUrl: '{DT_PATH}api/avatar/upload.php?auth={$auth}',
+			uploadSrc: false,
+		};
+		swfobject.embedSWF('{DT_PATH}api/avatar/avatar.swf', 'avatarshow', '650', '450', '8.0.0', '{DT_STATIC}file/flash/expressInstall.swf', flashVars);
+		Ds('avatartips');
+	} else {
+		Dh('avatarshow');Dh('avatartips');Ds('avatarupload');
+	}
+	function uploadevent(status) {
+		console.log(status,'statuc');
+		return false;
+		switch(status) {
+			case -1:
+				Go('?action=cancel');
+				break;
+			case 0:
+				alert('参数错误');
+			case 1:
+				console.log('11');
+				//Go('?action=update');
+				break;
+			case 2:
+				alert('请选择图片或拍照');
+				break;
+			case 3:
+				alert('图像格式错误');
+				Go('?action=error');
+				break;
+			default:
+				alert('上传失败，请重试');
+				Go('?action=error');
+				break;
+		}
+	}
+	$('#iframe-avatar').on('load',function(e){
+		console.log(e);
+	})
+</script>
+{template 'umyavatari_footer'}

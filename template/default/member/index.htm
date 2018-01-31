@@ -1,0 +1,81 @@
+{template 'ui_header'}
+<link href="{DT_STATIC}statics/css/ucenter.css" rel="stylesheet" />
+	<!-- <>个人中心主体区域 -->
+	<div class="sec__ucenter-wrapper mid pb--50 clearfix">
+		{template 'navigator',$module}
+		<div class="uc-main">
+			<div class="uc-inner">
+				<div class="uc-cntwrap clearfix">
+					<!-- //用户信息-->
+					<div class="uc-uinfo ucbor bg--fff">
+						<span class="uimg dib"><img src="{useravatar($_username, 'large')}" /></span>
+						<div class="info dib">
+							<div class="name mt--15">您好，<em class="ff-hv">{$_truename}</em></div>
+							<div class="safe mt--20 clearfix">
+								<label class="lbl">账户安全</label>
+								<div class="lv-safe dib"><span class="bg100 lv01"><i style="width:30%;">低</i></span> <a class="txt" href="#">去提升</a></div> <!--等级【低中高】：lv01、lv02、lv03 -->
+								<div class="link dib">
+									<a href="/member/security_center.php"><i class="ico i1"></i>绑定手机</a><a href="/member/security_center.php"><i class="ico i2"></i>绑定邮箱</a><a href="/member/edit_password.php"><i class="ico i3"></i>修改密码</a> <!-- 已经绑定：isbind -->
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- //最近浏览的商品-->
+					<div class="uc__cntwrap ucbor bg--fff mt--10">
+						<ul class="uc__switch-nav">
+							<li class="on"><a href="javascript:;">最近浏览的商品</a></li>
+						</ul>
+						<div class="uc-viewhistory padding30">
+							<ul class="clearfix" id="J__viewhistory">
+							</ul>
+							<div class="view-more">
+								<a href="/member/collection_lishi.php">查看更多</a>
+							</div>
+							<script type="text/javascript">
+								$("#J__viewhistory").on("click", ".del", function(){
+									$(this).parents("li").remove();
+								});
+							</script>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{DT_STATIC}statics/js/zCaches.js"></script>
+<script>
+	var ck = new zCaches();
+	var ck_list = ck.get();
+
+	var clen = ck_list.length;
+		clen > 20 && (clen = 20);
+
+	var ckwrap = $('#J__viewhistory');
+	ckwrap.on('click','li .del',function(e){
+		var key = $(this).data('id');
+		if(key){
+			ck.delete(key);
+		}
+		$(this).parents('li').remove();
+	});
+
+	for(var i=0;i<clen;i++){
+		render(ck_list[i]);
+	}
+
+	function render(item){
+		var tpl =   '<li>\
+						<a class="aimg" href="/' + item.type + '/show.php?itemid='+ item.id +'">\
+							<img src="'+item.cover+'" height="120" width="174" />\
+							<!--<em class="lbl">楼梯扶手</em>-->\
+						</a>\
+						<div class="title clamp2"><span><a href="/' + item.type + '/show.php?itemid='+ item.id +'">'+item.title+'</a></span></div>\
+						<a class="del" href="javascript:;" data-id="'+item.type+'_'+item.id+'" title="删除"></a>\
+					</li>';
+		ckwrap.append(tpl);
+	}
+</script>
+{template 'ui_footer'}

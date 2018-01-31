@@ -1,0 +1,47 @@
+{if $typeid == 5}
+<!-- <>轮播图区域 -->
+	<div class="zone__idx-slider J_idxSlider">
+		<div class="slider-inner">
+			<ul class="slider-list">
+{loop $tags $i $t}
+<li style="background-image: url({$t[thumb]});"><a href="{$t[linkurl]}" target="_blank" class="mid"></a></li>
+{/loop}
+			</ul>
+			<div class="slider-nav">
+				<div class="mid align-c">{loop $tags $i $t}<i></i><i>{/loop}</div>
+			</div>
+			<div class="slider-ctlbtn">
+				<a class="js-btn-prev"></a>
+				<a class="js-btn-next"></a>
+			</div>
+			<script type="text/javascript">
+				var $slider = $(".J_idxSlider"), $nav = $(".slider-nav i");
+				$slider.jq_xySlider({
+					effect: "fade",
+					autoplay:true,
+					delay: 5000,
+					onEnd: function(idx){
+						$nav.removeClass("on").eq(idx).addClass("on");
+					},
+					navigation: $nav
+				});
+			</script>
+		</div>
+		<div class="slider-search">
+			<div class="sear-inner">
+				<i class="close J__closeSearBox"></i>
+				<p class="tit">免费维修咨询</p>
+				<div class="form">
+					<input class="ipt-text" type="text" name="nickname" placeholder="您的称呼" style="width:180px;" />
+					<input class="ipt-text" type="text" name="telphone" placeholder="填写手机号码，东有家居装饰为您提供专属服务" style="width:420px;" />
+					<a class="btn-appointment" href="javascript:;">预约咨询</a>
+				</div>
+			</div>
+			<script type="text/javascript">
+				$(".J__closeSearBox").on("click", function(){
+					$(this).parents(".slider-search").fadeOut(300);
+				});
+			</script>
+		</div>
+	</div> <!-- END.zone-idx-slider -->
+{/if}

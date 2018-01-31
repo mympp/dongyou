@@ -1,0 +1,1 @@
+var DTPath = "http://dongyou.fenfenguo.com/";var SKPath = "http://dongyou.fenfenguo.com/skin/default/";var MEPath = "http://dongyou.fenfenguo.com/member/";var DTEditor = "fckeditor";var CKDomain = "";var CKPath = "/";var CKPrex = "ced_";

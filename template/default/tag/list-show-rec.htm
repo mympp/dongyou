@@ -1,0 +1,11 @@
+<ul class="clearfix">
+{loop $tags $i $t}
+    <li>
+        <a class="aimg" href="{$t[linkurl]}" title="{$t[alt]}">
+            <img src="i{$t[thumb]}" height="180" width="273" />
+        </a>
+        <div class="title clamp2"><span class="" style="height:40px;"><a href="{$t[linkurl]}">{$t[title]}</a></span></div>
+    </li>
+{/loop}
+</ul>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

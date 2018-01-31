@@ -1,0 +1,1 @@
+document.write('<a href="http://dongyou.fenfenguo.com/photo/show.php?itemid=25" target="_blank"><img src="http://dongyou.fenfenguo.com/file/upload/201801/28/174746401.jpg" width="245" height="400" alt=""/></a>');

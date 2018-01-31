@@ -1,0 +1,111 @@
+<div class="uc-nav aside J__aside">
+    <h2 class="hd"><a class="db" href="/member">个人中心首页</a></h2>
+    <dl>
+        <dd class="dropdown on"><i class="line"></i> <a href="javascript:;"><i class="ico i6"></i>收藏夹</a><i class="arr"></i></dd>
+        <dd class="dropdown__menu">
+            <div class="menu">
+                <a href="collection_jiaju.php">家居定制</a>
+                <a href="collection_anli.php">小区案例</a>
+                <a href="collection_changjian.php">常见问题</a>
+                <a href="collection_lishi.php">浏览历史</a>
+            </div>
+        </dd>
+        <dd class="dropdown on"><i class="line"></i> <a href="javascript:;"><i class="ico i7"></i>账户设置</a><i class="arr"></i></dd>
+        <dd class="dropdown__menu">
+            <div class="menu">
+                <a href="edit.php">个人信息</a>
+                <a href="security_center.php">安全中心</a>
+                <a href="feedback.php">反馈问答</a>
+            </div>
+        </dd>
+    </dl>
+</div>
+<script type="text/javascript">
+    $(function(){
+        /** __个人中心js部分 */
+            //鼠标滑过tr高亮
+//            $(".J__trHover").each(function(){$(this).find("tr:odd").addClass("on");});
+
+            //侧边栏菜单
+        $(".J__aside .dropdown").on("click", function(){
+            $(this).toggleClass("on");
+            $(this).next(".dropdown__menu").slideToggle(250);
+        });
+    });
+
+$(function(){
+    //删除收藏
+    $(".uc-collect").on("click", ".J__delCollect", function(){
+
+        if(!confirm("确认要删除？")){
+            return false;
+        }
+//        return false;
+        var that = $(this);
+        var id   = $(this).attr('data-itemid');
+        var action = 'delete';
+        $.post('/member/favorite_dongyou.php', {id:id,action:action}, function(data) {
+            if(data == 'true'){
+//                that.parents("tr").remove();
+                location.reload();
+            }else{
+                alert(data);
+            }
+        })
+    });
+
+    //删除全部
+    $(".uc-collect").on('click','.J__delAll',function(){
+        var id = [];
+        $("#J__ucCollect input[name='id[]']").each(function(i){
+            if($(this).is(":checked")){
+                id[i] = $(this).val();
+            }
+
+        });
+        if(id.length>0){
+            if(!confirm("确认要删除？")){
+                return false;
+            }
+            $.post('/member/favorite_dongyou.php', {id:id,action:'delete'}, function(data) {
+                if(data == 'true'){
+                    //                that.parents("tr").remove();
+                    location.reload();
+                }else{
+                    alert(data);
+                }
+            })
+        }
+    })
+
+    //多选|单选控制
+    $(".J__chkAll").on("click", function(){
+        if($(this).is(":checked")){
+            $(this).parent(".chkbox_item").addClass("on");
+            $("#J__ucCollect tbody .chkbox_item").addClass("on");
+            $("#J__ucCollect input[name='id[]']").prop("checked", true);
+        }else{
+            $(this).parent(".chkbox_item").removeClass("on");
+            $("#J__ucCollect tbody .chkbox_item").removeClass("on");
+            $("#J__ucCollect input[name='id[]']").prop("checked", false);
+        }
+    });
+    $("#J__ucCollect input[name='id[]']").on("click", function(){
+        $(this).parent(".chkbox_item").toggleClass("on");
+        var chkNum = $("#J__ucCollect input[name='id[]']").size();
+        var chk = 0;
+        $("#J__ucCollect input[name='id[]']").each(function(){
+            if($(this).is(":checked")){
+                chk++;
+            }
+        });
+        if(chkNum == chk){
+            $(".J__chkAll").prop("checked", true);
+            $(".J__chkAll").parent(".chkbox_item").addClass("on");
+        }else{
+            $(".J__chkAll").prop("checked", false);
+            $(".J__chkAll").parent(".chkbox_item").removeClass("on");
+        }
+    });
+});
+</script>
