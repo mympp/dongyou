@@ -91,21 +91,36 @@
                                     <?php $one_catid = $child['0']['catid']?>
                                     <?php if(is_array($child)) { foreach($child as $i => $k) { ?>
                                     <a class="option <?php if($catid == $k['catid'] || $thisCatid['2'] == $k['catid']) { ?>cur<?php } ?>
-" href="<?php echo $MOD['linkurl'];?><?php echo $k['linkurl'];?>"><?php echo $k['catname'];?></a>
+" href="<?php echo $MOD['linkurl'];?><?php echo $k['linkurl'];?>&onecatid=<?php echo $k['catid'];?>"><?php echo $k['catname'];?></a>
                                     <?php } } ?>
                                 </dd>
                             </dl>
                             <dl>
-                                <?php $two_carid = $two_carid == $parentid ? $one_catid : $two_carid?>
+                                <?php $two_carid = $_GET[onecatid] == '' ? $one_catid : $_GET[onecatid]?>
                                 <?php $childs = get_maincat($two_carid, $CATEGORY, 1);?>
-                                <?php if($two_carid) $thisCat = get_cat($two_carid);?>
-                                <dt><?php echo $thisCat['catname'];?></dt>
+                                <?php $this_two_catid = $childs['0']['catid']?>
+                                <?php if($two_carid) $thisoneCat = get_cat($two_carid);?>
+                                <dt><?php echo $thisoneCat['catname'];?></dt>
                                 <dd>
-                                    <a class="option <?php if($catid == $parentid) { ?>cur<?php } ?>
-" href="list.php?catid=<?php echo $parentid;?>">全部</a>
+                                    <a class="option <?php if($_GET['twocatid'] == '') { ?>cur<?php } ?>
+" href="list.php?catid=<?php echo $two_carid;?>&onecatid=<?php echo $_GET['onecatid'];?>">全部</a>
                                     <?php if(is_array($childs)) { foreach($childs as $i => $c) { ?>
-                                    <a class="option <?php if($catid == $c['catid']) { ?>cur<?php } ?>
-" href="<?php echo $MOD['linkurl'];?><?php echo $c['linkurl'];?>"><?php echo $c['catname'];?></a>
+                                    <a class="option <?php if($_GET['twocatid'] == $c['catid']) { ?>cur<?php } ?>
+" href="<?php echo $MOD['linkurl'];?><?php echo $c['linkurl'];?>&onecatid=<?php echo $thisoneCat['catid'];?>&twocatid=<?php echo $c['catid'];?>"><?php echo $c['catname'];?></a>
+                                    <?php } } ?>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <?php $three_carid = $_GET['twocatid'] == '' ? $this_two_catid : $_GET['twocatid']?>
+                                <?php $childs = get_maincat($three_carid, $CATEGORY, 1);?>
+                                <?php if($three_carid) $thistwoCat = get_cat($three_carid);?>
+                                <dt><?php echo $thistwoCat['catname'];?></dt>
+                                <dd>
+                                    <a class="option <?php if($_GET['threecatid'] == '') { ?>cur<?php } ?>
+" href="list.php?catid=<?php echo $three_carid;?>&onecatid=<?php echo $thisoneCat['catid'];?>&twocatid=<?php echo $thistwoCat['catid'];?>">全部</a>
+                                    <?php if(is_array($childs)) { foreach($childs as $i => $c) { ?>
+                                    <a class="option <?php if($_GET['threecatid'] == $c['catid']) { ?>cur<?php } ?>
+" href="<?php echo $MOD['linkurl'];?><?php echo $c['linkurl'];?>&onecatid=<?php echo $thisoneCat['catid'];?>&twocatid=<?php echo $thistwoCat['catid'];?>&threecatid=<?php echo $c['catid'];?>"><?php echo $c['catname'];?></a>
                                     <?php } } ?>
                                 </dd>
                             </dl>

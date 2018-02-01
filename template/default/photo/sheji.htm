@@ -91,24 +91,36 @@
                                     {php $child = get_maincat($parentid, $CATEGORY, 1);}
                                     {php $one_catid = $child[0][catid]}
                                     {loop $child $i $k}
-                                    <a class="option {if $catid == $k[catid] || $thisCatid[2] == $k[catid]}cur{/if}" href="{$MOD[linkurl]}{$k[linkurl]}">{$k[catname]}</a>
+                                    <a class="option {if $catid == $k[catid] || $thisCatid[2] == $k[catid]}cur{/if}" href="{$MOD[linkurl]}{$k[linkurl]}&onecatid={$k[catid]}">{$k[catname]}</a>
                                     {/loop}
                                 </dd>
                             </dl>
                             <dl>
-                                {php $two_carid = $two_carid == $parentid ? $one_catid : $two_carid}
+                                {php $two_carid = $_GET[onecatid] == '' ? $one_catid : $_GET[onecatid]}
                                 {php $childs = get_maincat($two_carid, $CATEGORY, 1);}
-
-                                <!--{php if($two_carid) $thisCat = get_cat($two_carid);}-->
-                                <dt>{$thisCat[catname]}</dt>
+                                {php $this_two_catid = $childs[0][catid]}
+                                <!--{php if($two_carid) $thisoneCat = get_cat($two_carid);}-->
+                                <dt>{$thisoneCat[catname]}</dt>
                                 <dd>
-                                    <a class="option {if $catid == $parentid}cur{/if}" href="list.php?catid={$parentid}">全部</a>
+                                    <a class="option {if $_GET[twocatid] == ''}cur{/if}" href="list.php?catid={$two_carid}&onecatid={$_GET[onecatid]}">全部</a>
                                     {loop $childs $i $c}
-                                    <a class="option {if $catid == $c[catid]}cur{/if}" href="{$MOD[linkurl]}{$c[linkurl]}">{$c[catname]}</a>
+                                    <a class="option {if $_GET[twocatid] == $c[catid]}cur{/if}" href="{$MOD[linkurl]}{$c[linkurl]}&onecatid={$thisoneCat[catid]}&twocatid={$c[catid]}">{$c[catname]}</a>
                                     {/loop}
                                 </dd>
                             </dl>
 
+                            <dl>
+                                {php $three_carid = $_GET['twocatid'] == '' ? $this_two_catid : $_GET['twocatid']}
+                                {php $childs = get_maincat($three_carid, $CATEGORY, 1);}
+                                <!--{php if($three_carid) $thistwoCat = get_cat($three_carid);}-->
+                                <dt>{$thistwoCat[catname]}</dt>
+                                <dd>
+                                    <a class="option {if $_GET[threecatid] == ''}cur{/if}" href="list.php?catid={$three_carid}&onecatid={$thisoneCat[catid]}&twocatid={$thistwoCat[catid]}">全部</a>
+                                    {loop $childs $i $c}
+                                    <a class="option {if $_GET[threecatid] == $c[catid]}cur{/if}" href="{$MOD[linkurl]}{$c[linkurl]}&onecatid={$thisoneCat[catid]}&twocatid={$thistwoCat[catid]}&threecatid={$c[catid]}">{$c[catname]}</a>
+                                    {/loop}
+                                </dd>
+                            </dl>
 
                         </li>
                         <!--{php $tags = tag("moduleid=$moduleid&c=3$dtype&catid=$catid&pagesize=10&page=$page&showpage=1&datetype=5&order=".$MOD[order]."&template=null")}-->
